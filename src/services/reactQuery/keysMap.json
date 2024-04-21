@@ -1,0 +1,21 @@
+{
+    "keys": {
+        "checkRut": "checkRut",
+        "user": "user",
+        "obfuscatedContactData": "obfuscated",
+        "accounts": "accounts",
+        "movements": "movements",
+        "certificates": "certificates",
+        "necessity": "necessity",
+        "alerts": "alerts",
+        "campaigns": "campaigns",
+        "informativeSectionInfo": "informativeSectionInfo",
+        "specialties": "specialties",
+        "appointments": "appointments",
+        "professionals": {
+            "getBySpecialtyId": "getBySpecialtyId",
+            "getDaysAvailability": "getDaysAvailability",
+            "getHoursAvailability": "getHoursAvailability"
+        }
+    }
+}

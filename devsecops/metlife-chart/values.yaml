@@ -1,0 +1,126 @@
+# Default values for metlife-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: ${acrRegistryUrl}/${acrNamespace}/images/${nameProject}
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ${chartVersion}
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ${serviceAccount}
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+#ingress:
+#  enabled: ${ingressEnabled}
+#  className: "nginx"
+#  annotations: {}
+#    # kubernetes.io/ingress.class: nginx
+#    # kubernetes.io/tls-acme: "true"
+#  hosts:
+#    - host: ${hostName}
+#      paths:
+#        - path: /
+#          pathType: ImplementationSpecific
+#  tls:
+#    - secretName: ${hostName}-tls
+#      hosts:
+#        - ${hostName}
+
+livenessProbe:
+  enabled: ${livenessProbeEnabled}
+  httpGet:
+    path: ${livenessProbePath}
+    port: ${port}
+  initialDelaySeconds: ${livenessProbeInitialDelaySeconds}
+  periodSeconds: ${livenessProbePeriodSeconds}
+
+readinessProbe:
+  enabled: ${readinessProbeEnabled}
+  tcpSocket:
+    port: ${port}
+  initialDelaySeconds: ${readinessProbeInitialDelaySeconds}
+  periodSeconds: ${readinessProbePeriodSeconds}
+
+startupProbe:
+  enabled: ${startupProbeEnabled}
+  httpGet:
+    path: ${startupProbePath}
+    port: ${port}
+  failureThreshold: ${startupProbeFailureThreshold}
+  periodSeconds: ${startupProbePeriodSeconds}
+
+service:
+  type: ClusterIP
+  port: ${port}
+
+istio:
+  enabled: ${istioEnabled}
+  host: ${hostName}
+
+  http:
+    - match:
+      - uri:
+          prefix: /
+      route:
+      - destination:
+          host: ${nameProject}
+          port:
+            number: ${port}
+
+envs:
+  PORT: ${port}
+  ENVIRONMENT: ${environment}
+  APP_SEMVER: ${semVer}
+
+resources:
+  enabled: ${resourcesEnabled}
+  limits:
+    #cpu: ${resourcesLimitsCpu}
+    memory: ${resourcesLimitsMemory}
+  requests:
+    cpu: ${resourcesRequestsCpu}
+    memory: ${resourcesRequestsMemory}
+
+autoscaling:
+  enabled: ${autoscalingEnabled}
+  minReplicas: ${autoscalingMinReplicas}
+  maxReplicas: ${autoscalingMaxReplicas}
+  targetCPUUtilizationPercentage: ${autoscalingTargetCPUUtilizationPercentage}
+  targetMemoryUtilizationPercentage: ${autoscalingTargetMemoryUtilizationPercentage}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+ 
+podDisruptionBudget:
+ enabled: ${podDisruptionBudgetEnabled}
+ minAvailable: ${podDisruptionBudgetMinAvailable}
+ maxUnavailable: ${podDisruptionBudgetMaxUnavailable}

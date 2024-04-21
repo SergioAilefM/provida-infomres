@@ -1,0 +1,17 @@
+@import '@ds.e/scss/src/foundation/all';
+
+.mo-web-button-group {
+    display: flex;
+
+    @include phone {
+        &.row-reverse {
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+    }
+    .dse-button {
+        position: relative;
+    }
+}

@@ -1,0 +1,54 @@
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - develop
+      - refactor/*
+      - bugfix/*
+      - hotfix/*
+      - feature/*
+      - master
+
+  tags:
+    include:
+      - "v*"
+    exclude:
+      - "v*dev*"
+
+variables:
+- name: environment
+  ${{ if endsWith( variables['Build.SourceBranch'], 'refs/heads/master' ) }}:
+    value: prod
+  ${{ elseif endsWith( variables['Build.SourceBranch'], 'refs/heads/develop' ) }}:
+    value: dev
+  ${{ elseif endsWith( variables['Build.SourceBranch'], 'refs/heads/feature/basedummy2' ) }}:
+    value: dev  
+  ${{ elseif startsWith( variables['Build.SourceBranch'], 'refs/heads/feature/' ) }}:
+    value: dev
+  ${{ elseif startsWith( variables['Build.SourceBranch'], 'refs/heads/refactor/' ) }}:
+    value: dev
+  ${{ elseif startsWith( variables['Build.SourceBranch'], 'refs/heads/release/' ) }}:
+    value: prod
+  ${{ elseif and(eq(variables['Build.SourceBranchName'], 'merge'), eq(variables['Build.Reason'], 'PullRequest')) }}:
+    value: dev
+  ${{ elseif startsWith(variables['Build.SourceBranch'], 'refs/tags/') }}:
+    ${{ if contains(variables['Build.SourceBranch'], 'dev') }}:
+      value: int
+    ${{ else }}:
+      value: qa
+  ${{ else }}:
+    value: none
+
+resources:
+  repositories:
+    - repository: devsecops-cicd
+      endpoint: MetlifeGlobal-Service-Connection
+      type: git
+      name: '3e28f9aa-923b-4b44-a3e1-7f3041958773/devsecops-cicd-templates'
+      ref: 'refs/heads/master'
+
+stages:
+  - template: azure-pipelines.yml@devsecops-cicd
+    parameters:
+      environment: ${{ variables.environment }}

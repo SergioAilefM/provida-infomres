@@ -1,0 +1,148 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "metlife-chart.fullname" . }}
+  labels:
+    {{- include "metlife-chart.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "metlife-chart.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- if and .Values.istio .Values.istio.enabled (eq .Values.istio.enabled true) }}
+        sidecar.istio.io/inject: "true"
+        {{- end }}
+        {{- include "metlife-chart.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "metlife-chart.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          {{- if and .Values.livenessProbe .Values.livenessProbe.enabled (eq .Values.livenessProbe.enabled true) }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.livenessProbe.httpGet.path }}
+              port: {{ .Values.livenessProbe.httpGet.port }}
+            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+          {{- end }}
+          {{- if and .Values.readinessProbe .Values.readinessProbe.enabled (eq .Values.readinessProbe.enabled true) }}
+          readinessProbe:
+            tcpSocket:
+              port: {{ .Values.readinessProbe.tcpSocket.port }}
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+          {{- end }}
+          {{- if and .Values.startupProbe .Values.startupProbe.enabled (eq .Values.startupProbe.enabled true) }}
+          startupProbe:
+            httpGet:
+              path: {{ .Values.startupProbe.httpGet.path }}
+              port: {{ .Values.startupProbe.httpGet.port }}
+            failureThreshold: {{ .Values.startupProbe.failureThreshold }}
+            periodSeconds: {{ .Values.startupProbe.periodSeconds }}
+          {{- end }}
+
+          {{- if and .Values.keyVault .Values.keyVault.enabled (eq .Values.keyVault.enabled true) }}
+          volumeMounts:
+          - name: secrets-store-inline
+            mountPath: "/mnt/secrets-store"
+            readOnly: true
+          {{- end }}
+
+          env:
+          {{- include "helpers.envs-variables" . | nindent 12 }}
+          {{- if and .Values.keyVault .Values.keyVault.enabled (eq .Values.keyVault.enabled true) }}
+            {{- include "helpers.secret-kv-env-variables" . | nindent 12 }}
+          {{- end }}
+
+          {{- if and .Values.resources .Values.resources.enabled (eq .Values.resources.enabled true) }}
+          resources:
+          {{- with .Values.resources.limits }}
+            limits:
+            {{- toYaml . | nindent 14 }}
+          {{- end }}
+          {{- with .Values.resources.requests }}
+            request:
+             {{- toYaml . | nindent 14 }}
+          {{- end }}
+          {{- end }}
+
+        {{- if and .Values.customService .Values.customService.enabled (eq .Values.customService.enabled true) }}
+        - name: {{ .Values.customService.name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.customService.name }}-{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: customhttp
+              containerPort: {{ .Values.customService.port }}
+              protocol: TCP
+          {{- if  eq .Values.customService.livenessProbe.enabled true }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.customService.livenessProbe.httpGet.path }}
+              port: {{ .Values.customService.livenessProbe.httpGet.port }}
+            initialDelaySeconds: {{ .Values.customService.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.customService.livenessProbe.periodSeconds }}
+          {{- end }}
+          {{- if eq .Values.customService.readinessProbe.enabled true }}
+          readinessProbe:
+            tcpSocket:
+              port: {{ .Values.customService.readinessProbe.tcpSocket.port }}
+            initialDelaySeconds: {{ .Values.customService.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.customService.readinessProbe.periodSeconds }}
+          {{- end }}
+          {{- if eq .Values.customService.startupProbe.enabled true }}
+          startupProbe:
+            httpGet:
+              path: {{ .Values.customService.startupProbe.httpGet.path }}
+              port: {{ .Values.customService.startupProbe.httpGet.port }}
+            failureThreshold: {{ .Values.customService.startupProbe.failureThreshold }}
+            periodSeconds: {{ .Values.customService.startupProbe.periodSeconds }}
+          {{- end }}
+        {{- end }}
+
+      {{- if and .Values.keyVault .Values.keyVault.enabled (eq .Values.keyVault.enabled true) }}
+      volumes:
+      - name: secrets-store-inline
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: "azure-kvname-system-msi"
+      {{- end }}
+
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

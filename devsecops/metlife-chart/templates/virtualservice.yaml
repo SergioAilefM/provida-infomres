@@ -1,0 +1,24 @@
+{{- if and .Values.istio .Values.istio.enabled (eq .Values.istio.enabled true) .Values.istio.http -}}
+{{- $fullName := include "metlife-chart.fullname" . -}}
+{{- $svcPort := .Values.service.port -}}
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: {{ $fullName }}-virtualservice
+  labels:
+    {{- include "metlife-chart.labels" . | nindent 4 }}
+  {{- with .Values.istio.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  hosts:
+    - {{ .Values.istio.host }}
+  gateways:
+    - istio-ingress/metlife-istio-gateway
+
+  http:
+  {{- with .Values.istio.http }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+{{- end }}

@@ -1,0 +1,11 @@
+{
+    "basePaths": [
+        "base"
+        ,"/specialties/sample"
+        ,"/garantia-estatal"
+        ,"/bono-reconocimiento"
+        ,"/revocacion-mandato"
+        ,"/transferencia-ahorros"
+        ,"/continuidad-tramite"
+]
+}

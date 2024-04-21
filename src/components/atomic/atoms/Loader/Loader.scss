@@ -1,0 +1,41 @@
+@import '@ds.e/scss/src/foundation/all';
+
+.loader-screen-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 96px);
+    transition: opacity 300ms ease-in-out;
+
+    @include phone {
+        height: calc(100vh - 65px);
+    }
+
+    .message-text {
+        max-width: rem(1080);
+        font-family: $metlife-circular-medium;
+        font-size: rem(24);
+        font-weight: 500;
+        color: $metlife-gray-darkest;
+        text-align: center;
+        line-height: 1.5;
+        margin-bottom: rem(8);
+        padding-left: 1rem;
+        padding-right: 1rem;
+        box-sizing: border-box;
+
+        @include phone {
+            margin-top: rem(32);
+            font-size: rem(18);
+            line-height: 1.5;
+        }
+    }
+
+    .loader-screen-animation {
+        margin-left: auto;
+        margin-right: auto;
+        width: rem(46);
+        height: auto;
+    }
+}

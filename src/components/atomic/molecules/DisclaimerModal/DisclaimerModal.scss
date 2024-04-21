@@ -1,0 +1,141 @@
+@import '@ds.e/scss/src/foundation/all';
+
+.dse-modal {
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(51, 51, 51, 0.75);
+    inset: 0;
+}
+
+.dse-modal::before {
+    opacity: 0.75;
+}
+
+.dse-modal--content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0 !important;
+    width: 100%;
+    height: 100vh;
+}
+
+.modal-disclaimer {
+    width: 48rem;
+    height: auto;
+    background-color: $metlife-light;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include phone {
+        width: calc(100vw - 3.125rem);
+        height: auto;
+    }
+
+    @include tablet {
+        width: calc(100vw - 3.125rem);
+        height: auto;
+    }
+
+    .modal-disclaimer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 2rem;
+
+        @include phone {
+            width: 20.5rem;
+        }
+
+        .mo-modal-container-description {
+            width: 100%;
+            position: relative;
+
+            .mo-modal-description {
+                text-align: start;
+                font-family: $notosans;
+                color: $metlife-gray-darkest;
+                line-height: 1.5;
+
+                .mo-modal-description-bold {
+                    font-family: $notosans-bold;
+                    font-weight: $fw-semibold;
+                }
+            }
+        }
+
+        .mo-speaker-img {
+            margin-top: 3.75rem;
+            width: 7.188rem;
+
+            @include phone {
+                margin-top: 3rem;
+                width: 6.25rem;
+            }
+        }
+
+        .mo-modal-title {
+            margin: 1rem 0;
+            width: 44rem;
+            height: 2.438rem;
+            text-align: center;
+            font-family: $metlife-circular-medium;
+            color: $metlife-gray-darkest;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1.625rem;
+            line-height: 150%;
+
+            @include phone {
+                text-align: center;
+                font-size: 1.25rem;
+                margin: 1rem 0;
+                width: 100%;
+            }
+        }
+
+        .modal-container-buttons {
+            margin: 3.5rem 0;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+
+            @include phone {
+                flex-direction: column-reverse;
+                margin: 3rem 0;
+            }
+
+            button {
+                min-width: 11.625rem;
+                height: 3.5rem;
+
+                span {
+                    font-family: $notosans !important;
+                    font-size: 1rem;
+                }
+
+                @include phone {
+                    width: 100%;
+                    margin: 0.625rem 0;
+                }
+            }
+
+            .modal-cancel-button {
+                margin: 0 1rem;
+            }
+        }
+    }
+}

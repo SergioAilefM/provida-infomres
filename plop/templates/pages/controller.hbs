@@ -1,0 +1,20 @@
+import React, { useEffect } from 'react';
+import DocumentTitle from'react-document-title';
+import { PAGE_TITLE } from '@constants/pageTitle';
+import { {{upperCase name}}_PAGE_LABELS } from '@constants/{{camelCase name}}PageLabels';
+import { useAdobeAnalytics } from '@hooks/useAdobeAnalytics'
+
+const {{properCase name}} = () => {
+    const { registerViewData} = useAdobeAnalytics()
+    useEffect(() =>{
+        registerViewData('{{upperCase name}}', 'page')
+    }, [])
+
+    return (
+        <DocumentTitle title={ PAGE_TITLE.{{upperCase name}} }>
+            <div> ${ {{upperCase name}}_PAGE_LABELS.NAME } </div>
+        </DocumentTitle>
+    );
+};
+
+export default {{properCase name}};

@@ -1,0 +1,25 @@
+#--> Triger Master Pipeline
+
+#--> Triger for all APIs and Web App
+trigger:
+  branches:
+    include:
+      - refs/heads/develop
+name: $(date:yyyyMMdd)$(rev:.r)
+
+jobs:
+  - job: Job_1
+    displayName: Agent job 1
+    pool:
+      vmImage: windows-latest
+    steps:
+      - checkout: self
+        clean: False
+        persistCredentials: True
+
+      - task: PowerShell@2
+        displayName: Generate notification
+        inputs:
+          targetType: inline
+          script: |
+            # Write your PowerShell commands here.

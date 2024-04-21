@@ -1,0 +1,183 @@
+import { useFormSteeper } from '@hooks/useFormSteeper'
+import { useNormaContext } from '@hooks/useNormaContext'
+import { useDocuments } from '@hooks/useDocuments'
+import { OnBoardingType } from 'schemas/Forms/OnBoardingSchema'
+import {
+    ApplicantProfileType,
+    BaseProfileType,
+    FormType,
+} from '@storage/interfaces/normaTypes'
+import { {{upperCase name}}_PAGE_LABELS } from '@constants/{{lowerCase name}}PageLabels'
+import { useOnboarding } from './useOnboarding'
+
+export const use{{upperCase name}}PageController = () => {
+    const {
+        normaState,
+        setFormType,
+        setApplicantInformation,
+        setInterestedInformation,
+        setEditMode,
+    } = useNormaContext()
+    const {
+        incrementFormStep,
+        decrementFormStep,
+        resetFormStep,
+        goToResume,
+        goToDocs,
+        goToStep,
+    } = useFormSteeper()
+    const { formStep, formType, onboarding, editMode } = normaState
+    const { onboardingDataRegister, onboardingDataReset } = useOnboarding()
+    const {
+        uploadFileList,
+        initApplicantDocuments,
+        initInterestedDocuments,
+        clearInterestedDocuments,
+        clearApplicantDocuments,
+    } = useDocuments()
+
+    const formTypeRegister = (_formType: FormType) => {
+        setFormType(_formType)
+    }
+
+    const onboardingDataRegisterHandler = (_formData: OnBoardingType) => {
+        onboardingDataRegister({
+            rut: _formData.rut,
+            userProfile: _formData.userProfile as ApplicantProfileType,
+            userProfileRepresented: _formData.rutRepresented as BaseProfileType,
+            rutRepresented: _formData.rutRepresented,
+            requestNumber: Number(_formData.requestNumber),
+            deceasedRUT: _formData.rutCausant,
+        })
+    }
+
+    const editApplicantInformation = () => {
+        setEditMode(true)
+        goToStep(1)
+    }
+
+    const editApplicantDocuments = () => {
+        setEditMode(true)
+        goToStep(2)
+    }
+
+    const editInterestedInformation = () => {
+        setEditMode(true)
+        goToStep(3)
+    }
+
+    const editInterestedDocuments = () => {
+        setEditMode(true)
+        goToStep(4)
+    }
+
+    const forwardEditModeHandler = () => {
+        if (editMode) {
+            setEditMode(false)
+            goToResume()
+        } else {
+            incrementFormStep()
+        }
+    }
+
+    const forwardButtonHandler = (_formData?: any) => {
+        switch (formStep) {
+            case 0:
+                onboardingDataRegisterHandler(_formData)
+                clearApplicantDocuments()
+                clearInterestedDocuments()
+                initApplicantDocuments(
+                    _formData.userProfile,
+                    {{upperCase name}}_PAGE_LABELS.DOCUMENTS,
+                )
+                if (_formData.userProfileRepresented)
+                    initInterestedDocuments(
+                        _formData.userProfileRepresented,
+                        {{upperCase name}}_PAGE_LABELS.DOCUMENTS,
+                    )
+
+                incrementFormStep()
+                break
+            case 1:
+                setApplicantInformation({
+                    rut: _formData.rut,
+                    name: _formData.names,
+                    lastName: _formData.lastNames,
+                    email: _formData.email,
+                    movil: _formData.phone,
+                })
+                forwardEditModeHandler()
+
+                break
+            case 2:
+                if (!onboarding?.userProfileRepresented) {
+                    goToResume()
+                } else {
+                    forwardEditModeHandler()
+                }
+
+                break
+            case 3:
+                setInterestedInformation({
+                    rut: _formData.rut,
+                    name: _formData.names,
+                    lastName: _formData.lastNames,
+                    email: _formData.email,
+                    movil: _formData.phone,
+                })
+                forwardEditModeHandler()
+                break
+            case 4:
+                console.log('upload File Interested')
+                forwardEditModeHandler()
+                break
+            case 5:
+                incrementFormStep()
+                // TODO call service
+                break
+            case 6:
+                console.log('downLoad')
+                break
+
+            default:
+                break
+        }
+    }
+
+    const backButtonHandler = () => {
+        switch (formStep) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 6:
+                decrementFormStep()
+                break
+            case 5:
+                if (!onboarding?.userProfileRepresented) {
+                    goToDocs()
+                } else {
+                    decrementFormStep()
+                }
+                break
+            default:
+                break
+        }
+    }
+
+    const uploadFileListHandler = (_searchString: string) => {
+        return uploadFileList(_searchString, {{upperCase name}}_PAGE_LABELS.DOCUMENTS)
+    }
+
+    return {
+        formTypeRegister,
+        forwardButtonHandler,
+        backButtonHandler,
+        uploadFileListHandler,
+        editApplicantInformation,
+        editApplicantDocuments,
+        editInterestedInformation,
+        editInterestedDocuments,
+    }
+}

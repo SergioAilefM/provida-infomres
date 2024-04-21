@@ -1,0 +1,16 @@
+{
+    "operations": [
+        "base"
+        ,"/specialties/sample/getSpecialtiesSample"
+        ,"/garantia-estatal/getGaes"
+        ,"/bono-reconocimiento/getSbre"
+        ,"/revocacion-mandato/getRcav"
+        ,"/transferencia-ahorros/getTcav"
+        ,"/revocacion-mandato/postRcav"
+        ,"/transferencia-ahorros/postTcav"
+        ,"/garantia-estatal/postGaes"
+        ,"/bono-reconocimiento/postSbre"
+        ,"/continuidad-tramite/getCota"
+        ,"/continuidad-tramite/postCota"
+]
+}

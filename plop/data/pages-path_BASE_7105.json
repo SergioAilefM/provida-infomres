@@ -1,0 +1,15 @@
+{
+    "paths": [
+        "/UploadProof",
+		"/",
+        "/home",
+        "/especialidades",
+        "/error",
+        "/miagenda",
+        "/agendar",
+        "/agendarconsulta",
+        "/provisory-pip",
+        "/especialidades/:specialtyId",
+        "/stepper"
+    ]
+}
