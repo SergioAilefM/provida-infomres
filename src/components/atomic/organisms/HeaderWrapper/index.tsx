@@ -1,1 +1,1 @@
-export { default } from './HeaderWrapper'
+export { default } from './HeaderWrapper';

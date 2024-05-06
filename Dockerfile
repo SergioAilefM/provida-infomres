@@ -1,4 +1,4 @@
-FROM node:16.16.0-alpine as build
+FROM node:18-alpine as build
 
 ARG PATH_CONTEXT \
     NODE_OPTIONS \
@@ -21,12 +21,12 @@ COPY ./package.json \
     ./tsconfig.json \
     ./config-overrides.js \
     ./tsconfig.json \
-    ./.eslint* \
+    #./.eslint* \
     .npmrc ./
 
 COPY ./src ./src
 COPY ./public ./public
-COPY ./mockServer ./mockServer
+##COPY ./mockServer ./mockServer
 COPY ./public/assets/config/env/config.${ENVIRONMENT}.js ./public/assets/config/config.js
 
 RUN yarn config set cache-folder $YARN_CACHE_FOLDER

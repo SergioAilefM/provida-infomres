@@ -1,103 +1,49 @@
 {
-    "compilerOptions": {
-        // Specifies the target ECMAScript version for the compiled code
-        "target": "es5",
-
-        // Specifies the libraries to be included in the compilation process
-        "lib": ["dom", "dom.iterable", "esnext"],
-
-        // Allows JavaScript files to be compiled
-        "allowJs": true,
-
-        // Skips type checking of library files
-        "skipLibCheck": true,
-
-        // Enables interoperability between CommonJS and ECMAScript modules
-        "esModuleInterop": true,
-
-        // Allows importing a module that has a default export as if it had named exports
-        "allowSyntheticDefaultImports": true,
-
-        // Enables strict type checking
-        "strict": true,
-
-        // Forces consistent casing of file names
-        "forceConsistentCasingInFileNames": true,
-
-        // Requires all switch statements to have explicit case fall-through
-        "noFallthroughCasesInSwitch": true,
-
-        // Specifies the module system to be used for code generation
-        "module": "esnext",
-
-        // Specifies how module dependencies should be resolved
-        "moduleResolution": "node",
-
-        // Allows importing JSON modules
-        "resolveJsonModule": true,
-
-        // Ensures each file is treated as a separate module
-        "isolatedModules": true,
-
-        // Disables emitting output files during the compilation process
-        "noEmit": true,
-
-        // Specifies the JSX factory function to use for React JSX
-        "jsx": "react-jsx",
-
-        // Specifies the base directory for resolving non-relative module names
-        "baseUrl": "./src",
-
-        // Specifies path mappings for module resolution
-        "paths": {
-            "@adobeAnalytics/*": ["analytics/*"],
-            "@assetsJSON/*": ["assets/json/*"],
-            "@assetsSVG/*": ["assets/svg/*"],
-            "@assetsICONS/*": ["assets/icons/*"],
-            "@atoms/*": ["components/atomic/atoms/*"],
-            "@molecules/*": ["components/atomic/molecules/*"],
-            "@organisms/*": ["components/atomic/organisms/*"],
-            "@templates/*": ["components/atomic/templates/*"],
-            "@pages/*": ["components/atomic/pages/*"],
-            "@hoc/*": ["components/hoc/*"],
-            "@custom/*": ["components/custom/*"],
-            "@constants/*": ["constants/*"],
-            "@helpers/*": ["helpers/*"],
-            "@hooks/*": ["hooks/*"],
-            "@scss/*": ["scss/*"],
-            "@services/*": ["services/*"],
-            "@storage/*": ["storage/*"],
-            "@utilities/*": ["utilities/*"],
-            "@test/*": ["test/*"],
-            "@models/*": ["services/models/*"],
-            "@axios/*": ["services/axiosInstance/*"],
-            "@query/*": ["services/reactQuery/*"]
-        }
-    },
-
-    // Specifies the files and directories to be included in the compilation process
-    "include": [
-        "src",
-        "public",
-        "jest.config.js",
-        "babel.config.js",
-        "file-mock.js"
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
     ],
-
-    // Specifies the files and directories to be excluded from the compilation process
-    "exclude": [
-        "mockServer",
-        ".vscode",
-        ".git",
-        "CodeTour",
-        "plop",
-        "docs",
-        "README.md",
-        "prettier.config.js",
-        "plopfile.js",
-        "jest.config.js",
-        "default.conf",
-        "commitlint.config.js",
-        ".pretttierignore"
-    ]
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "./src",
+    "paths":{
+      "@scss/*": ["scss/*"],
+      "@organisms/*": ["components/atomic/organisms/*"],
+      "@pages/*": ["components/atomic/pages/*"],
+      "@atoms/*": ["components/atomic/atoms/*"],
+      "@molecules/*": ["components/atomic/molecules/*"],
+      "@constants/*": ["constants/*"],
+      "@services/*": ["services/*"],
+      "@storage/*": ["storage/*"],
+      "@utilities/*": ["utilities/*"],
+      "@models/*": ["services/models/*"],
+      "@axios/*": ["services/axiosInstance/*"]
+    }
+  },
+  
+  "include": [
+    "src"
+  ],
+  "exclude": [   
+    ".git",   
+    "README.md",
+    "prettier.config.js",    
+    "jest.config.js",   
+    "commitlint.config.js",
+    ".pretttierignore"
+]
 }
