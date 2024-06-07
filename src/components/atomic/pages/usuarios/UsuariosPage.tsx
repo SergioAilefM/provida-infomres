@@ -35,6 +35,7 @@ const defaultData: dataUsuario[] = dataUsuarios.usuarios;
 const defaultDataPerfil: Perfiles[] = dataPefil;
 
 
+
 declare module '@tanstack/react-table' {
     // add fuzzy filter to the filterFns
     interface FilterFns {
