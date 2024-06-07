@@ -1,0 +1,9 @@
+{
+    "operations": [
+        "base"
+,"/perfiles/getPerfiles"
+,"/Usuarios/getUsuarios"
+,"/roles/getRoles"
+,"/funcionalidad/getFuncionalidad"
+]
+}

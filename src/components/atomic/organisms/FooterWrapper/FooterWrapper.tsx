@@ -1,14 +1,23 @@
-import { Container } from "react-bootstrap"
+import React from 'react'
+import { Spacing } from '@ds.e/foundation'
+import './FooterWrapper.scss'
 
-const FooterWrapper = () => {
+export interface FooterWrapperProps {
+    hexCode?: string
+    width?: keyof typeof Spacing,
+    height?: keyof typeof Spacing
+}
 
-    return (
-        <Container>
-            <div className="justify-content-md-center">
-               © Copyright Metlife 2020
-            </div>
-        </Container>
-    );
+const FooterWrapper: React.FC<FooterWrapperProps> = ({ hexCode = 'pink', width = Spacing.sm, height = Spacing.sm }) => {
+    const className = `dse-width-${width} dse-height-${height}`
+
+    return <div className={className} style={
+        {
+            backgroundColor: hexCode,
+        }
+    }>
+        FooterWrapper
+    </div>
 }
 
 export default FooterWrapper

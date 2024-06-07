@@ -1,0 +1,9 @@
+/*.js
+** / *. js
+node_modules
+build
+/src/react-app-env.d.ts
+mockServer
+api/*
+codeTour
+plop

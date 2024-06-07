@@ -1,0 +1,269 @@
+{
+    "usuarios" :[
+      {
+        "nombre": "Brandyn_Torphy",
+        "cod_usuario": 35,
+        "rut": "1"
+      },
+      {
+        "nombre": "Carmela74",
+        "cod_usuario": 10,
+        "rut": "2"
+      },
+      {
+        "nombre": "Etha_Pacocha",
+        "cod_usuario": 93,
+        "rut": "3"
+      },
+      {
+        "nombre": "Araceli.Jaskolski",
+        "cod_usuario": 99,
+        "rut": "4"
+      },
+      {
+        "nombre": "Bryon94",
+        "cod_usuario": 98,
+        "rut": "5"
+      },
+      {
+        "nombre": "Candida.Bailey14",
+        "cod_usuario": 52,
+        "rut": "6"
+      },
+      {
+        "nombre": "Liliana_Cole",
+        "cod_usuario": 20,
+        "rut": "7"
+      },
+      {
+        "nombre": "Felicia_Christiansen87",
+        "cod_usuario": 18,
+        "rut": "8"
+      },
+      {
+        "nombre": "Reese96",
+        "cod_usuario": 55,
+        "rut": "9"
+      },
+      {
+        "nombre": "Martin.McCullough89",
+        "cod_usuario": 93,
+        "rut": "10"
+      },
+      {
+        "nombre": "Verlie.Beahan",
+        "cod_usuario": 51,
+        "rut": "11"
+      },
+      {
+        "nombre": "Johnnie_Russel35",
+        "cod_usuario": 14,
+        "rut": "12"
+      },
+      {
+        "nombre": "Zion.Cummings",
+        "cod_usuario": 48,
+        "rut": "13"
+      },
+      {
+        "nombre": "Rosina6",
+        "cod_usuario": 23,
+        "rut": "14"
+      },
+      {
+        "nombre": "Winston.Trantow",
+        "cod_usuario": 50,
+        "rut": "15"
+      },
+      {
+        "nombre": "Bernard.Durgan",
+        "cod_usuario": 96,
+        "rut": "16"
+      },
+      {
+        "nombre": "Arnaldo.Adams78",
+        "cod_usuario": 21,
+        "rut": "17"
+      },
+      {
+        "nombre": "Jerad8",
+        "cod_usuario": 33,
+        "rut": "18"
+      },
+      {
+        "nombre": "Anabel.Waelchi",
+        "cod_usuario": 66,
+        "rut": "19"
+      },
+      {
+        "nombre": "Pete5",
+        "cod_usuario": 50,
+        "rut": "20"
+      },
+      {
+        "nombre": "Ila.Auer97",
+        "cod_usuario": 46,
+        "rut": "21"
+      },
+      {
+        "nombre": "Rhea.Kling85",
+        "cod_usuario": 45,
+        "rut": "22"
+      },
+      {
+        "nombre": "Raphael_Pouros32",
+        "cod_usuario": 43,
+        "rut": "23"
+      },
+      {
+        "nombre": "Archibald_Russel",
+        "cod_usuario": 80,
+        "rut": "24"
+      },
+      {
+        "nombre": "Rosemary_Cummings49",
+        "cod_usuario": 48,
+        "rut": "25"
+      },
+      {
+        "nombre": "Boyd_Reichert16",
+        "cod_usuario": 19,
+        "rut": "26"
+      },
+      {
+        "nombre": "Agnes.Littel2",
+        "cod_usuario": 82,
+        "rut": "27"
+      },
+      {
+        "nombre": "Isac.Brekke68",
+        "cod_usuario": 76,
+        "rut": "28"
+      },
+      {
+        "nombre": "Karlee6",
+        "cod_usuario": 4,
+        "rut": "29"
+      },
+      {
+        "nombre": "Wiley.Muller67",
+        "cod_usuario": 80,
+        "rut": "30"
+      },
+      {
+        "nombre": "Hans_Mante84",
+        "cod_usuario": 67,
+        "rut": "31"
+      },
+      {
+        "nombre": "Elroy_Goldner",
+        "cod_usuario": 73,
+        "rut": "32"
+      },
+      {
+        "nombre": "Ryder34",
+        "cod_usuario": 23,
+        "rut": "33"
+      },
+      {
+        "nombre": "Jasen.Kuhic",
+        "cod_usuario": 50,
+        "rut": "34"
+      },
+      {
+        "nombre": "Spencer.Hammes",
+        "cod_usuario": 20,
+        "rut": "35"
+      },
+      {
+        "nombre": "Angeline_Anderson58",
+        "cod_usuario": 39,
+        "rut": "36"
+      },
+      {
+        "nombre": "Shirley26",
+        "cod_usuario": 52,
+        "rut": "37"
+      },
+      {
+        "nombre": "Maiya80",
+        "cod_usuario": 53,
+        "rut": "38"
+      },
+      {
+        "nombre": "Nora_Rau44",
+        "cod_usuario": 93,
+        "rut": "39"
+      },
+      {
+        "nombre": "Zita_Kris",
+        "cod_usuario": 100,
+        "rut": "40"
+      },
+      {
+        "nombre": "Bernie23",
+        "cod_usuario": 1,
+        "rut": "41"
+      },
+      {
+        "nombre": "Adah_Schamberger69",
+        "cod_usuario": 17,
+        "rut": "42"
+      },
+      {
+        "nombre": "Daphne_Kuhn8",
+        "cod_usuario": 20,
+        "rut": "43"
+      },
+      {
+        "nombre": "Ashleigh3",
+        "cod_usuario": 65,
+        "rut": "44"
+      },
+      {
+        "nombre": "Amber.Emmerich",
+        "cod_usuario": 3,
+        "rut": "45"
+      },
+      {
+        "nombre": "Vita_Goldner37",
+        "cod_usuario": 100,
+        "rut": "46"
+      },
+      {
+        "nombre": "Taryn57",
+        "cod_usuario": 21,
+        "rut": "47"
+      },
+      {
+        "nombre": "Ezequiel83",
+        "cod_usuario": 16,
+        "rut": "48"
+      },
+      {
+        "nombre": "Alvena32",
+        "cod_usuario": 3,
+        "rut": "49"
+      },
+      {
+        "nombre": "Cleve_Keebler",
+        "cod_usuario": 70,
+        "rut": "50"
+      },
+      {
+        "nombre": "George_Ward",
+        "cod_usuario": 69,
+        "rut": "51"
+      },
+      {
+        "nombre": "Drake.OHara",
+        "cod_usuario": 92,
+        "rut": "52"
+      },
+      {
+        "nombre": "Aisha.Monahan0",
+        "cod_usuario": 30,
+        "rut": "53"
+      }
+    ]
+}

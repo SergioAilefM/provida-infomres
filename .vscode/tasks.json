@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "create:page",
+			"problemMatcher": [],
+			"label": "npm: create:page",
+			"detail": "plop page"
+		},
+		{
+			"type": "npm",
+			"script": "start",
+			"problemMatcher": [],
+			"label": "npm: start",
+			"detail": "react-app-rewired  -r tsconfig-paths/register start"
+		}
+	]
+}

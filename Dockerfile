@@ -29,6 +29,9 @@ COPY ./public ./public
 ##COPY ./mockServer ./mockServer
 COPY ./public/assets/config/env/config.${ENVIRONMENT}.js ./public/assets/config/config.js
 
+#RUN npm config set strict-ssl false
+#RUN npm install --force
+
 RUN yarn config set cache-folder $YARN_CACHE_FOLDER
 RUN --mount=type=cache,sharing=shared,target=$YARN_CACHE_FOLDER \
     YARN_CACHE_FOLDER=$YARN_CACHE_FOLDER yarn install --pure-lockfile --link-duplicates --prefer-offline
@@ -53,7 +56,7 @@ RUN rm /etc/nginx/conf.d/default.conf && \
     chown -R nginx.nginx /var/log/nginx && \
     chown -R nginx.nginx /etc/nginx/conf.d
 
-COPY --chown=nginx:nginx default.conf.template /etc/nginx/templates
+#COPY --chown=nginx:nginx default.conf.template /etc/nginx/templates
 
 WORKDIR /usr/share/nginx/html
 

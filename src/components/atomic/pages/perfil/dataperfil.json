@@ -1,0 +1,42 @@
+[
+    {
+      "cod_perfil": "8903",
+      "des_perfil": "Mable Swift",
+      "des_gerencia": "North",
+      "glosa_perfil": "South Sadyeville",
+      "comentario": "Bronze",
+      "id": "1"
+    },
+    {
+      "cod_perfil": "10432",
+      "des_perfil": "Melvin Kulas",
+      "des_gerencia": "East",
+      "glosa_perfil": "Albinatown",
+      "comentario": "North",
+      "id": "2"
+    },
+    {
+      "cod_perfil": "18617",
+      "des_perfil": "Terry Padberg DDS",
+      "des_gerencia": "Southeast",
+      "glosa_perfil": "Runteborough",
+      "comentario": "sievert",
+      "id": "3"
+    },
+    {
+      "cod_perfil": "617",
+      "des_perfil": "Mrs. Jeffery Torphy DDS",
+      "des_gerencia": "East",
+      "glosa_perfil": "Kendall",
+      "comentario": "bah",
+      "id": "4"
+    },
+    {
+      "cod_perfil": "4669",
+      "des_perfil": "Dr. Kathleen Schmeler",
+      "des_gerencia": "Northeast",
+      "glosa_perfil": "Burien",
+      "comentario": "likewise",
+      "id": "5"
+    }
+  ]

@@ -1,0 +1,9 @@
+{
+    "basePaths": [
+        "base"
+,"/perfiles"
+,"/Usuarios"
+,"/roles"
+,"/funcionalidad"
+]
+}

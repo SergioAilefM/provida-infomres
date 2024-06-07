@@ -1,17 +1,13 @@
+import React from 'react';
 import { Button } from "react-bootstrap";
-import { Config } from "@services/index";
 import { useMsal } from "@azure/msal-react";
+import { loginRequest } from "@hoc/InitializeAuth";
 
-const ButtonSingIn = () => {
+function ButtonSingIn() {
     const { instance } = useMsal();
-
-    //const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    //const open = Boolean(anchorEl);
-  
     const handleLogin = (loginType: string) => {
-     // setAnchorEl(null);    
-        instance.loginPopup(Config.loginRequest);
-     
+        instance.loginPopup(loginRequest);
+        console.log(loginType);
     };
     return (
         <Button variant="primary" onClick={() => handleLogin("popup")} >Iniciar Session</Button>

@@ -1,46 +1,62 @@
 {
-  "name": "provida-infomres",
+  "name": "gestion-facultades-frontend",
   "version": "0.1.0",
   "private": true,
+  "protocol": "https",
+  "webpackProtocol": "--https",
   "dependencies": {
-    "@azure/msal-browser": "^3.13.0",
-    "@azure/msal-react": "^2.0.15",
-    "@reactivex/rxjs": "^6.6.7",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "axios": "^1.6.8",
+    "@azure/msal-browser": "^3.15.0",
+    "@azure/msal-react": "^2.0.17",
+    "@ds.e/foundation": "^0.1.3",
+    "@ds.e/react": "^0.1.3",
+    "@react-rxjs/core": "^0.10.7",
+    "@react-rxjs/utils": "^0.9.7",
+    "@tanstack/match-sorter-utils": "^8.15.1",
+    "@tanstack/react-table": "^8.17.3",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
-    "eslint-plugin-unused-imports": "^3.1.0",
-    "moment": "^2.30.1",
+    "eslint": "^9.4.0",
+    "fs-promise": "^2.0.3",
+    "jest": "^29.7.0",
+    "lodash": "^4.17.21",
+    "luxon": "^3.4.4",
+    "path": "^0.12.7",
+    "plop-pack-json-modify": "^1.1.0",
     "react": "^18.3.1",
     "react-app-rewired": "^2.2.1",
     "react-bootstrap": "^2.10.2",
+    "react-document-title": "^2.0.3",
     "react-dom": "^18.3.1",
+    "react-query": "^3.39.3",
+    "react-router": "^6.23.1",
+    "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
-    "sass": "^1.75.0",
-    "tsconfig-paths-webpack-plugin": "^4.1.0",
-    "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0"
+    "react-table": "^7.8.0",
+    "rxjs": "^7.8.1",
+    "ts-jest": "^29.1.4",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix --debug"
   },
   "scripts": {
-    "start": "react-app-rewired -r tsconfig-paths/register start",
+    "start": "react-app-rewired  -r tsconfig-paths/register start",
     "build": "react-app-rewired build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "jest",
+    "commit": "yarn lint && yarn git-cz",
+    "eject": "react-scripts eject",
+    "init:app": "plop init",
+    "create:component": "plop component",
+    "create:page": "plop page",
+    "create:service": "plop service",
+    "start:json-server": "node mockServer/server.js"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "browserslist": {
     "production": [
@@ -55,9 +71,44 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.24.6",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/react-hooks": "^8.0.1",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/luxon": "^3.4.2",
+    "@types/node": "^16.18.97",
+    "@types/react": "^18.3.3",
+    "@types/react-document-title": "^2.0.9",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^7.12.0",
+    "@typescript-eslint/parser": "^7.11.0",
+    "axios-mock-adapter": "^1.22.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jest": "^28.5.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-prettier": "^5.1.3",
-    "prettier": "^3.2.5",
-    "resolve-url-loader": "^5.0.0"
+    "eslint-plugin-react": "^7.34.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-typescript": "^0.14.0",
+    "eslint-plugin-unused-imports": "^4.0.0",
+    "json-server": "^1.0.0-beta.0",
+    "lint-staged": "^15.2.5",
+    "plop": "^4.0.1",
+    "prettier": "^3.3.0",
+    "sass": "^1.77.4",
+    "tsconfig-paths-webpack-plugin": "^4.1.0"
+  },
+  "resolutions": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0"
   }
 }

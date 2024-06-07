@@ -1,0 +1,52 @@
+[
+    {
+        "cod_perfil": "8903",
+        "des_perfil": "Mable Swift",
+        "des_gerencia": "North",
+        "glosa_perfil": "South Sadyeville",
+        "id": "1",
+        "nombre": "Brandyn_Torphy",
+        "cod_usuario": 35,
+        "rut": "1"
+    },
+    {
+        "cod_perfil": "10432",
+        "des_perfil": "Melvin Kulas",
+        "des_gerencia": "East",
+        "glosa_perfil": "Albinatown",
+        "id": "2",
+        "nombre": "Carmela74",
+        "cod_usuario": 10,
+        "rut": "2"
+    },
+    {
+        "cod_perfil": "18617",
+        "des_perfil": "Terry Padberg DDS",
+        "des_gerencia": "Southeast",
+        "glosa_perfil": "Runteborough",
+        "id": "3",
+        "nombre": "Etha_Pacocha",
+        "cod_usuario": 93,
+        "rut": "3"
+    },
+    {
+        "cod_perfil": "617",
+        "des_perfil": "Mrs. Jeffery Torphy DDS",
+        "des_gerencia": "East",
+        "glosa_perfil": "Kendall",
+        "id": "4",
+        "nombre": "Araceli.Jaskolski",
+        "cod_usuario": 99,
+        "rut": "4"
+    },
+    {
+        "cod_perfil": "4669",
+        "des_perfil": "Dr. Kathleen Schmeler",
+        "des_gerencia": "Northeast",
+        "glosa_perfil": "Burien",
+        "id": "5",
+        "nombre": "Bryon94",
+        "cod_usuario": 98,
+        "rut": "5"
+    }
+]

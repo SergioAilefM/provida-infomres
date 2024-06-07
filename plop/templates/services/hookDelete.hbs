@@ -1,0 +1,29 @@
+import { useMutation } from 'react-query'
+import { getAxiosInstance } from '@axios/index'
+import { useAppContext } from '@hooks/useAppContext'
+import { {{properCase basePath}} } from '../{{properCase basePath}}Model'
+
+
+export async function fetch{{properCase operationType}}{{properCase operationName}}(
+  id: number,
+): Promise<{{properCase basePath}}> {
+  const { data } = await getAxiosInstance().{{camelCase operationType}}(
+    `{{basePath}}/${id}`,
+  )
+  return data
+}
+
+export function use{{properCase operationType}}{{properCase operationName}}(
+  id: number,
+): any | undefined {
+  const { appState } = useAppContext()
+  return = useMutation({
+    mutationFn: id =>
+    fetch{{properCase operationType}}{{properCase operationName}} ( id )
+  })
+}
+
+
+//     useHook
+//     const {{camelCase operationType}}{{properCase operationName}} = use{{properCase operationType}}{{properCase operationName}}()
+//     () => {{camelCase operationType}}{{properCase operationName}}.mutate( id )

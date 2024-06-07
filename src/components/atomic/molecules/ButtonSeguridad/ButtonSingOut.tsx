@@ -1,16 +1,11 @@
+import React from 'react';
 import { Button } from "react-bootstrap";
 import { useMsal } from "@azure/msal-react";
-import { useState } from "react";
 
-const ButtonSingOut = () => {
-    const { instance } = useMsal();
-
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
-
+function ButtonSingOut() {
+    const { instance } = useMsal();    
     const handleLogout = (logoutType: string) => {
-        setAnchorEl(null);
-
+         console.log(logoutType);
         instance.logoutPopup({
             mainWindowRedirectUri: "/",
         });

@@ -1,0 +1,7 @@
+{
+    "components": [
+        "FooterWrapper",
+        "HeaderWrapper",
+        "ButtonGroup"
+    ]
+}
